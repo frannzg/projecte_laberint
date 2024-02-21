@@ -8,116 +8,107 @@ public class laberint_pepito {
 		Scanner teclat = new Scanner(System.in);
 
 		char laberint1[][] = { { 'P', 'M', ' ', ' ', ' ' },
-								{ ' ', 'M', ' ', 'M', ' ' },
-								{ ' ', ' ', ' ', 'M', ' ' },
-								{ ' ', 'M', ' ', 'M', 'S' },
-								{ 'M', 'M', ' ', 'M', 'M' } };
-		
-		char laberint2[][] = { { 'P', ' ', 'M', 'M', ' ','M','S' },
-								{ 'M', ' ', 'M', ' ', ' ','M',' ' },
-								{ ' ', ' ', 'M', ' ', 'M','M',' ' },
-								{ ' ', 'M', 'M', ' ', ' ',' ',' ' },
-								{ ' ', ' ', ' ', ' ', 'M','M','M'} };
-		
-		char laberint3[][] = { { 'P', 'M', 'M', 'M', ' ',' ',' ','M' },
-								{ ' ', ' ', 'M', ' ', ' ','M',' ','M' },
-								{ 'M', ' ', 'M', ' ', 'M','M',' ','S' },
-								{ 'M', ' ', 'M', ' ', ' ','M','M','M' },
-								{ ' ', ' ', ' ', ' ', ' ',' ',' ','M'} };
-		
-		
+				{ ' ', 'M', ' ', 'M', ' ' },
+				{ ' ', ' ', ' ', 'M', ' ' },
+				{ ' ', 'M', ' ', 'M', 'S' },
+				{ 'M', 'M', ' ', 'M', 'M' } };
+
+		char laberint2[][] = { { 'P', ' ', 'M', 'M', ' ', 'M', 'S' },
+				{ 'M', ' ', 'M', ' ', ' ', 'M', ' ' },
+				{ ' ', ' ', 'M', ' ', 'M', 'M', ' ' },
+				{ ' ', 'M', 'M', ' ', ' ', ' ', ' ' },
+				{ ' ', ' ', ' ', ' ', 'M', 'M', 'M' } };
+
+		char laberint3[][] = { { 'P', 'M', 'M', 'M', ' ', ' ', ' ', 'M' },
+				{ ' ', ' ', 'M', ' ', ' ', 'M', ' ', 'M' },
+				{ 'M', ' ', 'M', ' ', 'M', 'M', ' ', 'S' },
+				{ 'M', ' ', 'M', ' ', ' ', 'M', 'M', 'M' },
+				{ ' ', ' ', ' ', ' ', ' ', ' ', ' ', 'M' } };
+
 		int arrayNivells[];
 		int arrayMoviments[];
 		boolean arribat[];
-	
-		
+
 		boolean sortir = false;
-		int moviments=0;
-		int numPartida=0;
-		
+		int moviments = 0;
+		int numPartida = 0;
 
 		System.out.println("Benvingut al laberint de pepito");
 
 		do {
-			//MENU PRINCIPAL
+			// MENU PRINCIPAL
 			System.out.println("1.Jugar partida");
 			System.out.println("2.Resultat partides");
 			System.out.println("3.Sortir");
 			int resposta = teclat.nextInt();
 
-			//CAS DE JUGAR PARTIDA
+			// CAS DE JUGAR PARTIDA
 			if (resposta == 1) {
 
 				System.out.println("Quin nivell de dificultat vols anar?(1,2,3)");
 				int nivell = teclat.nextInt();
-				
-				if(nivell == 1) {
-					
+
+				if (nivell == 1) {
+
 					numPartida++;
-					
-					//BUCLE PRIMER NIVELL 
-					while(!sortir) {
-						
+
+					// BUCLE PRIMER NIVELL
+					while (!sortir) {
+
 						mostrarMatriu(laberint1);
 						System.out.println("Quina acció vols fer? w = pujar, s = baixar, a = esquerra, d = dreta ");
 						char moviment = teclat.next().charAt(0);
-						
-						moures(laberint1,moviment);
-					
+
+						moures(laberint1, moviment);
+
 					}
-					
-				} else if(nivell == 2) {
-					
+
+				} else if (nivell == 2) {
+
 					numPartida++;
-					
-					//BUCLE SEGON NIVELL 
-					while(!sortir) {
-						
+
+					// BUCLE SEGON NIVELL
+					while (!sortir) {
+
 						mostrarMatriu(laberint2);
 						System.out.println("Quina acció vols fer?");
 						char moviment = teclat.next().charAt(0);
-						
-						moures(laberint2,moviment);
-					
+
+						moures(laberint2, moviment);
+
 					}
-					
-				} else if(nivell == 3) {
-					
+
+				} else if (nivell == 3) {
+
 					numPartida++;
-					
-					//BUCLE TERCER NIVELL 
-					while(!sortir) {
-						
+
+					// BUCLE TERCER NIVELL
+					while (!sortir) {
+
 						mostrarMatriu(laberint3);
 						System.out.println("Quina acció vols fer?");
 						char moviment = teclat.next().charAt(0);
-						
-						moures(laberint3,moviment);
-					
+
+						moures(laberint3, moviment);
+
 					}
-	
+
 				}
 
-			} else if(resposta == 2) {
-				
-				//for(int i=0;i<arrayNivells.length;i++) {
-					
-					
-					
-					
-				//}
-				
-				
-				
-				
+			} else if (resposta == 2) {
+
+				// for(int i=0;i<arrayNivells.length;i++) {
+
+				// }
+
 			}
 
 		} while (!sortir);
 
 	}
-	
+
 	public static void mostrarMatriu(char matriu[][]) {
-		
+
 		for (int i = 0; i < matriu.length; i++) {
 			for (int j = 0; j < matriu[i].length; j++) {
 
@@ -126,52 +117,31 @@ public class laberint_pepito {
 			}
 			System.out.println();
 		}
-		
-		
+
 	}
 
-	public static char moures(char matriu[][],char moviment) {
-		
-		if(moviment == 'W') {
-			
-			
-			
-		} else if(moviment == 'S') {
-			
-			
-			
-		} else if(moviment == 'D') {
-			
-			
-			
-		} else if(moviment == 'A') {
-			
-			
-			
-		} else if(moviment == 'Q') {
-			
-			
-			
-			
+	public static char moures(char matriu[][], char moviment) {
+
+		if (moviment == 'W') {
+
+		} else if (moviment == 'S') {
+
+		} else if (moviment == 'D') {
+
+		} else if (moviment == 'A') {
+
+		} else if (moviment == 'Q') {
+
 		} else {
-			
+
 			System.out.println("Tecla incorrecte!");
-			
-			
+
 		}
-		
-		
-	
+
 	}
-	
-	public static void resultats(int partides[], int moviments[],boolean sortit[]) {
-		
-		
-		
-		
-		
-		
-		
+
+	public static void resultats(int partides[], int moviments[], boolean sortit[]) {
+
 	}
 
 }

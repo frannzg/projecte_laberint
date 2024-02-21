@@ -29,6 +29,7 @@ public class laberint_pepito {
 		int arrayNivells[];
 		int arrayMoviments[];
 		boolean arribat[];
+        int proba;
 	
 		
 		boolean sortir = false;

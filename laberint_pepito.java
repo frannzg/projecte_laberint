@@ -100,12 +100,12 @@ public class laberint_pepito {
 
 			} else if(resposta == 2) {
 				
-				for(int i=0;i<arrayNivells.length;i++) {
+				//for(int i=0;i<arrayNivells.length;i++) {
 					
 					
 					
 					
-				}
+				//}
 				
 				
 				
@@ -161,7 +161,7 @@ public class laberint_pepito {
 		}
 		
 		
-		
+	
 	}
 	
 	public static void resultats(int partides[], int moviments[],boolean sortit[]) {

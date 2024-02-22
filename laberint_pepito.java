@@ -27,7 +27,7 @@ public class laberint_pepito {
 
 		int arrayNivells[];
 		int arrayMoviments[];
-		boolean arribat[];
+		boolean arrayArribat[];
 
 		boolean sortir = false;
 		int moviments = 0;
@@ -70,6 +70,7 @@ public class laberint_pepito {
 					// BUCLE SEGON NIVELL
 					while (!sortir) {
 
+
 						mostrarMatriu(laberint2);
 						System.out.println("Quina acció vols fer?");
 						char moviment = teclat.next().charAt(0);
@@ -97,9 +98,7 @@ public class laberint_pepito {
 
 			} else if (resposta == 2) {
 
-				// for(int i=0;i<arrayNivells.length;i++) {
-
-				// }
+				resultats(arrayNivells,arrayMoviments,arrayArribat);
 
 			}
 
@@ -126,6 +125,7 @@ public class laberint_pepito {
 
 		} else if (moviment == 'S') {
 
+      
 		} else if (moviment == 'D') {
 
 		} else if (moviment == 'A') {
@@ -141,6 +141,16 @@ public class laberint_pepito {
 	}
 
 	public static void resultats(int partides[], int moviments[], boolean sortit[]) {
+
+		for(int i=0;i<partides.length;i++){
+
+			System.out.println("partides: "+partides[i]+", moviments: "+moviments[i]+", ha sortit: "+sortit[i]);
+
+		}
+		
+
+
+
 
 	}
 

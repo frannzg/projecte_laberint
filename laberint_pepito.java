@@ -75,6 +75,8 @@ public class laberint_pepito {
 							
 							if (moviment.equalsIgnoreCase("W")) {
 
+								mouresAmunt(laberint1, 1);
+
 
 							} else if (moviment.equalsIgnoreCase("A")) {
 
@@ -161,6 +163,8 @@ public class laberint_pepito {
 							
 							if (moviment.equalsIgnoreCase("W")) {
 
+
+
 							} else if (moviment.equalsIgnoreCase("A")) {
 
 						  
@@ -221,22 +225,23 @@ public class laberint_pepito {
 
 	}
 
-	public static char mouresAmunt(String matriu[][], String moviment) {
+	public static char mouresAmunt(String matriu[][], int moviment) {
+
 
 		
 
 	}
-	public static char mouresAbaix(String matriu[][], String moviment) {
+	public static char mouresAbaix(String matriu[][], int moviment) {
 
 		
 
 	}
-	public static char mouresDreta(String matriu[][], String moviment) {
+	public static char mouresDreta(String matriu[][], int moviment) {
 
 		
 
 	}
-	public static char mouresEsquerra(String matriu[][], String moviment) {
+	public static char mouresEsquerra(String matriu[][], int moviment) {
 
 		
 

@@ -7,19 +7,19 @@ public class laberint_pepito {
 
 		Scanner teclat = new Scanner(System.in);
 
-		String laberint1[][] = { { "P", "M"," ", " ", " " },
+		String laberint1[][] = { { " ", "M", " ", " ", " " },
 				{ " ", "M", " ", "M", " " },
 				{ " ", " ", " ", "M", " " },
 				{ " ", "M", " ", "M", "S" },
 				{ "M", "M", " ", "M", "M" } };
 
-		String laberint2[][] = { { "P", " ", "M", "M", " ", "M", "S" },
+		String laberint2[][] = { { " ", " ", "M", "M", " ", "M", "S" },
 				{ "M", " ", "M", " ", " ", "M", " " },
 				{ " ", " ", "M", " ", "M", "M", " " },
 				{ " ", "M", "M", " ", " ", " ", " " },
 				{ " ", " ", " ", " ", "M", "M", "M" } };
 
-		String laberint3[][] = { { "P", "M", "M", "M", " ", " ", " ", "M" },
+		String laberint3[][] = { { " ", "M", "M", "M", " ", " ", " ", "M" },
 				{ " ", " ", "M", " ", " ", "M", " ", "M" },
 				{ "M", " ", "M", " ", "M", "M", " ", "S" },
 				{ "M", " ", "M", " ", " ", "M", "M", "M" },
@@ -60,42 +60,38 @@ public class laberint_pepito {
 					// BUCLE PRIMER NIVELL
 					while (!sortirPartida) {
 
-						boolean arribat=false;
+						boolean arribat = false;
 						mostrarMatriu(laberint1);
-						System.out.println("Quina acció vols fer? w = pujar, s = baixar, a = esquerra, d = dreta| q = sortir ");
+						System.out.println("Quina acció vols fer? w = pujar, s = baixar, a = esquerra, d = dreta, q = sortir ");
 						String moviment = teclat.nextLine();
-						if(moviment.equalsIgnoreCase("q") || arribat == true){
+						if (moviment.equalsIgnoreCase("q") || arribat == true) {
 
-							if(arribat == true){ //PONER ARRAY WINS arrayArribat
-								
-			
+							if (arribat == true) { // PONER ARRAY WINS arrayArribat
+
 							}
 							sortirPartida = true;
 						} else {
-							
+
 							if (moviment.equalsIgnoreCase("W")) {
 
 								mouresAmunt(laberint1, 1);
 
-
 							} else if (moviment.equalsIgnoreCase("A")) {
 
-						  
 							} else if (moviment.equalsIgnoreCase("S")) {
 
-					
 							} else if (moviment.equalsIgnoreCase("D")) {
 
 							} else {
-					
+
 								System.out.println("Tecla incorrecte!");
-					
+
 							}
 
 						}
 
 					}
-					
+
 				} else if (nivell == 2) {
 
 					numPartida++;
@@ -103,41 +99,32 @@ public class laberint_pepito {
 					// BUCLE SEGON NIVELL
 					while (!sortirPartida) {
 
-						boolean arribat=false;
+						boolean arribat = false;
 						mostrarMatriu(laberint2);
-						System.out.println("Quina acció vols fer? w = pujar, s = baixar, a = esquerra, d = dreta| q = sortir ");
+						System.out.println("Quina acció vols fer? w = pujar, s = baixar, a = esquerra, d = dreta, q = sortir ");
 						String moviment = teclat.nextLine();
-						if(moviment.equalsIgnoreCase("q") || arribat == true){
+						if (moviment.equalsIgnoreCase("q") || arribat == true) {
 
-							if(arribat == true){ //PONER ARRAY WINS arrayArribat
-								
-			
+							if (arribat == true) { // PONER ARRAY WINS arrayArribat
+
 							}
 							sortirPartida = true;
 						} else {
-							
-							if (moviment.equalsIgnoreCase("W")) {
 
-								
+							if (moviment.equalsIgnoreCase("W")) {
 
 							} else if (moviment.equalsIgnoreCase("A")) {
 
-						  
 							} else if (moviment.equalsIgnoreCase("S")) {
 
-					
 							} else if (moviment.equalsIgnoreCase("D")) {
 
 							} else {
-					
+
 								System.out.println("Tecla incorrecte!");
-					
+
 							}
-
 						}
-
-						
-
 					}
 
 				} else if (nivell == 3) {
@@ -147,40 +134,35 @@ public class laberint_pepito {
 					// BUCLE TERCER NIVELL
 					while (!sortirPartida) {
 
-						boolean arribat=false;
+						boolean arribat = false;
 						mostrarMatriu(laberint3);
-						System.out.println("Quina acció vols fer?");
+						System.out.println("Quina acció vols fer? w = pujar, s = baixar, a = esquerra, d = dreta, q = sortir ");
 						String moviment = teclat.nextLine();
 
-						if(moviment.equalsIgnoreCase("q") || arribat == true){
+						if (moviment.equalsIgnoreCase("q") || arribat == true) {
 
-							if(arribat == true){ //PONER ARRAY WINS arrayArribat
-								
-			
+							if (arribat == true) { // PONER ARRAY WINS arrayArribat
+
 							}
 							sortirPartida = true;
 						} else {
-							
+
 							if (moviment.equalsIgnoreCase("W")) {
-
-
 
 							} else if (moviment.equalsIgnoreCase("A")) {
 
-						  
 							} else if (moviment.equalsIgnoreCase("S")) {
 
-					
 							} else if (moviment.equalsIgnoreCase("D")) {
 
 							} else {
-					
+
 								System.out.println("Tecla incorrecte!");
-					
+
 							}
 
 						}
- 
+
 					}
 
 				} else {
@@ -189,18 +171,18 @@ public class laberint_pepito {
 
 				}
 
-				//Cas de MIRAR la llista de partides
+				// Cas de MIRAR la llista de partides
 			} else if (resposta == 2) {
 
 				System.out.println("RESULTATS");
-				//resultats(arrayNivells,arrayMoviments,arrayArribat);
+				// resultats(arrayNivells,arrayMoviments,arrayArribat);
 
-			//SORTIDA DEL JOC
-			} else if (resposta == 3){
+				// SORTIDA DEL JOC
+			} else if (resposta == 3) {
 
 				sortirJoc = true;
 
-			//NUMERO INCORRECTE
+				// NUMERO INCORRECTE
 			} else {
 
 				System.out.println("Reposta incorrecte!");
@@ -227,44 +209,38 @@ public class laberint_pepito {
 
 	public static char mouresAmunt(String matriu[][], int moviment) {
 
-
-		
-
 	}
+
 	public static char mouresAbaix(String matriu[][], int moviment) {
 
-		
-
 	}
+
 	public static char mouresDreta(String matriu[][], int moviment) {
 
-		
-
 	}
-	public static char mouresEsquerra(String matriu[][], int moviment) {
 
-		
+	public static char mouresEsquerra(String matriu[][], int moviment) {
 
 	}
 
 	public static void resultats(int partides[], int moviments[], boolean sortit[]) {
 
-		for(int i=0;i<partides.length;i++){
+		for (int i = 0; i < partides.length; i++) {
 
-			System.out.println("partides: "+partides[i]+", moviments: "+moviments[i]+", ha sortit: "+sortit[i]);
+			System.out
+					.println("partides: " + partides[i] + ", moviments: " + moviments[i] + ", ha sortit: " + sortit[i]);
 
 		}
-		
-	}
-
-	public static boolean sortirPartida(){
-
-	return true;	
 
 	}
 
-	public static int modificarPosicio(char matriu[][], int moviment){
+	public static boolean sortirPartida() {
 
+		return true;
+
+	}
+
+	public static int modificarPosicio(char matriu[][], int moviment) {
 
 	}
 

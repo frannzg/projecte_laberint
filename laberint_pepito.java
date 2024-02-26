@@ -168,9 +168,6 @@ public class laberint_pepito {
 
 					
 				}
-
-
-
 			}
 			modificarPosicio(matriu, moviment);
 
@@ -205,7 +202,6 @@ public class laberint_pepito {
 	public static boolean sortirPartida(){
 
 	return true;	
-
 
 	}
 

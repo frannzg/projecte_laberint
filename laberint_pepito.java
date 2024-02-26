@@ -7,8 +7,8 @@ public class laberint_pepito {
 
 		Scanner teclat = new Scanner(System.in);
 
-		String laberint1[][] = { { " ", "M", " ", " ", " " },
-				{ " ", "M", " ", "M", " " },
+		String laberint1[][] = { { " ", "M", " ", " ", " " },			//LABERINTOS
+				{ " ", "M", " ", "M", " " },	
 				{ " ", " ", " ", "M", " " },
 				{ " ", "M", " ", "M", "S" },
 				{ "M", "M", " ", "M", "M" } };
@@ -25,13 +25,13 @@ public class laberint_pepito {
 				{ "M", " ", "M", " ", " ", "M", "M", "M" },
 				{ " ", " ", " ", " ", " ", " ", " ", "M" } };
 
-		int arrayNivells[];
-		int arrayMoviments[];
+		int arrayNivells[]; 
+		int arrayMoviments[];						//ARRAYS DE RESULTADOS
 		boolean arrayArribat[];
 
 		boolean sortirJoc = false;
 		int moviments = 0;
-		int numPartida = 0;
+		int numPartida = 0;							//CONTADORES PARA PONER EN CADA HUECO DE LOS ARRAYS DE ARRIBA
 
 		System.out.println("Benvingut al laberint de pepito");
 
@@ -66,27 +66,16 @@ public class laberint_pepito {
 						String moviment = teclat.nextLine();
 						if (moviment.equalsIgnoreCase("q") || arribat == true) {
 
+							System.out.println("aaaaa");
+
 							if (arribat == true) { // PONER ARRAY WINS arrayArribat
 
 							}
 							sortirPartida = true;
 						} else {
 
-							if (moviment.equalsIgnoreCase("W")) {
-
-								mouresAmunt(laberint1, 1);
-
-							} else if (moviment.equalsIgnoreCase("A")) {
-
-							} else if (moviment.equalsIgnoreCase("S")) {
-
-							} else if (moviment.equalsIgnoreCase("D")) {
-
-							} else {
-
-								System.out.println("Tecla incorrecte!");
-
-							}
+							System.out.println("bbbbbb");
+							modificarPosicio(laberint1, moviment);
 
 						}
 
@@ -177,6 +166,7 @@ public class laberint_pepito {
 				System.out.println("RESULTATS");
 				// resultats(arrayNivells,arrayMoviments,arrayArribat);
 
+
 				// SORTIDA DEL JOC
 			} else if (resposta == 3) {
 
@@ -206,30 +196,100 @@ public class laberint_pepito {
 		}
 
 	}
+	public static void modificarPosicio(String matriu[][], String moviment) {
 
-	public static char mouresAmunt(String matriu[][], int moviment) {
+		int x=0;
+		int y=0;
+
+		if (moviment.equalsIgnoreCase("W")) {
+
+			y=-1;
+
+			mouresAmunt(matriu,x,y);
+
+
+		} else if (moviment.equalsIgnoreCase("A")) {
+
+			x=-1;
+		
+			mouresAmunt(matriu,x,y);
+
+
+		} else if (moviment.equalsIgnoreCase("S")) {
+
+			y=+1;
+			
+
+			mouresAmunt(matriu,x,y);
+
+
+		} else if (moviment.equalsIgnoreCase("D")) {
+			x=+1;
+			mouresAmunt(matriu,x,y);
+
+		} else {
+
+			System.out.println("Tecla incorrecte!");
+
+		}
+
 
 	}
 
-	public static char mouresAbaix(String matriu[][], int moviment) {
+	public static void mouresAmunt(String matriu[][], int x,int y) {
+
+		for(int i=0 ;i<matriu.length;i++){
+			for(int j=0;j<matriu[i].length;j++){
+
+				if(i == x && j == y-1){
+					
+					if(matriu[x][y-1].equalsIgnoreCase(" ")){
+
+						matriu[x][y-1] = "P";
+						matriu[x][y] = " ";
+
+					} else {
+
+						System.out.println("NO ES POT ANAR");
+
+					}
+
+
+				}
+			}
+		}
+
+
+		if(matriu[x][y-1].equalsIgnoreCase(" ")){
+			matriu[x][y-1] = "P";
+			matriu[x][y] = " ";
+		} else {
+
+			System.out.println("NO ES POT MOURE A AQUESTA POSICIÓ");
+
+
+		}
 
 	}
 
-	public static char mouresDreta(String matriu[][], int moviment) {
+	public static char mouresAbaix(String matriu[][], int x,int y) {
 
 	}
 
-	public static char mouresEsquerra(String matriu[][], int moviment) {
+	public static char mouresDreta(String matriu[][], int x,int y) {
 
 	}
+
+	public static char mouresEsquerra(String matriu[][], int x,int y) {
+
+	}
+
+
 
 	public static void resultats(int partides[], int moviments[], boolean sortit[]) {
 
 		for (int i = 0; i < partides.length; i++) {
-
-			System.out
-					.println("partides: " + partides[i] + ", moviments: " + moviments[i] + ", ha sortit: " + sortit[i]);
-
+			System.out.println("partides: " + partides[i] + ", moviments: " + moviments[i] + ", ha sortit: " + sortit[i]);
 		}
 
 	}
@@ -240,8 +300,6 @@ public class laberint_pepito {
 
 	}
 
-	public static int modificarPosicio(char matriu[][], int moviment) {
-
-	}
+	
 
 }

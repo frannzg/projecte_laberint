@@ -100,19 +100,9 @@ public class laberint_pepito {
 							sortirPartida = true;
 						} else {
 
-							if (moviment.equalsIgnoreCase("W")) {
-
-							} else if (moviment.equalsIgnoreCase("A")) {
-
-							} else if (moviment.equalsIgnoreCase("S")) {
-
-							} else if (moviment.equalsIgnoreCase("D")) {
-
-							} else {
-
-								System.out.println("Tecla incorrecte!");
-
-							}
+							System.out.println("cccccc");
+							modificarPosicio(laberint2, moviment);
+							
 						}
 					}
 
@@ -136,19 +126,9 @@ public class laberint_pepito {
 							sortirPartida = true;
 						} else {
 
-							if (moviment.equalsIgnoreCase("W")) {
-
-							} else if (moviment.equalsIgnoreCase("A")) {
-
-							} else if (moviment.equalsIgnoreCase("S")) {
-
-							} else if (moviment.equalsIgnoreCase("D")) {
-
-							} else {
-
-								System.out.println("Tecla incorrecte!");
-
-							}
+							System.out.println("dddddd");
+							modificarPosicio(laberint3, moviment);
+							
 
 						}
 
@@ -300,6 +280,19 @@ public class laberint_pepito {
 
 	}
 
+	/*						if (moviment.equalsIgnoreCase("W")) {
+
+							} else if (moviment.equalsIgnoreCase("A")) {
+
+							} else if (moviment.equalsIgnoreCase("S")) {
+
+							} else if (moviment.equalsIgnoreCase("D")) {
+
+							} else {
+
+								System.out.println("Tecla incorrecte!");
+
+							} */
 	
 
 }

@@ -7,13 +7,13 @@ public class laberint_pepito {
 
 		Scanner teclat = new Scanner(System.in);
 
-		String laberint1[][] = { { " ", "M", " ", " ", " " },			//LABERINTOS
+		String laberint1[][] = { { "M", "M", " ", " ", " " },			//LABERINTOS
 				{ " ", "M", " ", "M", " " },	
 				{ " ", " ", " ", "M", " " },
 				{ " ", "M", " ", "M", "S" },
 				{ "M", "M", " ", "M", "M" } };
 
-		String laberint2[][] = { { " ", " ", "M", "M", " ", "M", "S" },
+		String laberint2[][] = { { "M", " ", "M", "M", " ", "M", "S" },
 				{ "M", " ", "M", " ", " ", "M", " " },
 				{ " ", " ", "M", " ", "M", "M", " " },
 				{ " ", "M", "M", " ", " ", " ", " " },
@@ -52,13 +52,18 @@ public class laberint_pepito {
 				int nivell = teclat.nextInt();
 				teclat.nextLine();
 				arrayNivells = new int[numPartida];
+				arrayMoviments = new int[numPartida];
+				//arrayArribat;
 
 				if (nivell == 1) {
 
 					numPartida++;
 
+					trobarPosicioInicial(laberint1);
+
 					// BUCLE PRIMER NIVELL
 					while (!sortirPartida) {
+
 
 						boolean arribat = false;
 						mostrarMatriu(laberint1);
@@ -74,6 +79,7 @@ public class laberint_pepito {
 							sortirPartida = true;
 						} else {
 
+							moviments++;
 							System.out.println("bbbbbb");
 							modificarPosicio(laberint1, moviment);
 
@@ -81,9 +87,13 @@ public class laberint_pepito {
 
 					}
 
+				//	arrayMoviments[numPartida] = moviments;
+
 				} else if (nivell == 2) {
 
 					numPartida++;
+
+					trobarPosicioInicial(laberint2);
 
 					// BUCLE SEGON NIVELL
 					while (!sortirPartida) {
@@ -96,19 +106,30 @@ public class laberint_pepito {
 
 							if (arribat == true) { // PONER ARRAY WINS arrayArribat
 
+							//	arrayArribat[numPartida] = true;
+
 							}
 							sortirPartida = true;
 						} else {
 
+							moviments++;
 							System.out.println("cccccc");
 							modificarPosicio(laberint2, moviment);
 							
 						}
 					}
 
+
+					//arrayMoviments
+
+
+
 				} else if (nivell == 3) {
 
 					numPartida++;
+
+					trobarPosicioInicial(laberint3);
+
 
 					// BUCLE TERCER NIVELL
 					while (!sortirPartida) {
@@ -126,6 +147,7 @@ public class laberint_pepito {
 							sortirPartida = true;
 						} else {
 
+							moviments++;
 							System.out.println("dddddd");
 							modificarPosicio(laberint3, moviment);
 							
@@ -181,30 +203,32 @@ public class laberint_pepito {
 		int x=0;
 		int y=0;
 
+		
+
 		if (moviment.equalsIgnoreCase("W")) {
 
-			y=-1;
+			y--;
 
 			mouresAmunt(matriu,x,y);
 
 
 		} else if (moviment.equalsIgnoreCase("A")) {
 
-			x=-1;
+			x--;
 		
 			mouresAmunt(matriu,x,y);
 
 
 		} else if (moviment.equalsIgnoreCase("S")) {
 
-			y=+1;
+			y++;
 			
 
 			mouresAmunt(matriu,x,y);
 
 
 		} else if (moviment.equalsIgnoreCase("D")) {
-			x=+1;
+			x++;
 			mouresAmunt(matriu,x,y);
 
 		} else {
@@ -218,41 +242,69 @@ public class laberint_pepito {
 
 	public static void mouresAmunt(String matriu[][], int x,int y) {
 
-		for(int i=0 ;i<matriu.length;i++){
-			for(int j=0;j<matriu[i].length;j++){
 
-				if(i == x && j == y-1){
-					
-					if(matriu[x][y-1].equalsIgnoreCase(" ")){
+		if(x<0 && x>matriu.length || y<0 && y<matriu.length){
 
-						matriu[x][y-1] = "P";
-						matriu[x][y] = " ";
+			System.out.println("Et surts del laberint!");
 
-					} else {
-
-						System.out.println("NO ES POT ANAR");
-
-					}
-
-
-				}
-			}
-		}
-
-
-		if(matriu[x][y-1].equalsIgnoreCase(" ")){
-			matriu[x][y-1] = "P";
-			matriu[x][y] = " ";
 		} else {
 
-			System.out.println("NO ES POT MOURE A AQUESTA POSICIÓ");
-
+			for(int i=0 ;i<matriu.length;i++){
+				for(int j=0;j<matriu[i].length;j++){
+	
+					if(i == x && j == y){
+						
+						if(matriu[x][y-1].equalsIgnoreCase(" ")){
+	
+							matriu[x][y-1] = "P";
+							matriu[x][y] = " ";
+	
+						} else {
+	
+							System.out.println("NO ES POT ANAR");
+	
+						}
+	
+					}
+				}
+			}
 
 		}
 
 	}
 
 	public static char mouresAbaix(String matriu[][], int x,int y) {
+
+		if(x<0 && x>matriu.length || y<0 && y<matriu.length){
+
+			System.out.println("Et surts del laberint!");
+
+		} else {
+
+			for(int i=0 ;i<matriu.length;i++){
+				for(int j=0;j<matriu[i].length;j++){
+	
+					if(i == x && j == y){
+						
+						if(matriu[x][y+1].equalsIgnoreCase(" ")){
+	
+							matriu[x][y+1] = "P";
+							matriu[x][y] = " ";
+	
+						} else {
+	
+							System.out.println("NO ES POT ANAR");
+	
+						}
+	
+					}
+				}
+			}
+
+		}
+
+
+
 
 	}
 
@@ -274,9 +326,38 @@ public class laberint_pepito {
 
 	}
 
-	public static boolean sortirPartida() {
 
-		return true;
+	public static void trobarPosicioInicial(String matriu[][]){
+
+		int x = 0;
+		int y = 0;
+	
+		if(matriu[x][y].equalsIgnoreCase(" ")){
+
+			matriu[x][y] = "P";
+
+		} else if (matriu[x+1][y].equalsIgnoreCase(" ")){
+
+
+			matriu[x+1][y] = "P";
+
+
+		} else if (matriu[x][y+1].equalsIgnoreCase(" ")){
+
+			matriu[x][y+1] = "P";
+
+		} else if(matriu[x-1][y].equalsIgnoreCase(" ")){
+
+
+			matriu[x-1][y]= "P";
+
+		} else if(matriu[x][y-1].equalsIgnoreCase(" ")){
+
+			matriu[x][y-1] = "P";
+
+		}
+
+		
 
 	}
 

@@ -1,4 +1,6 @@
+import java.util.IntSummaryStatistics;
 import java.util.Scanner;
+
 
 public class laberint_pepito {
 
@@ -31,7 +33,8 @@ public class laberint_pepito {
 
 		boolean sortirJoc = false;
 		int moviments = 0;
-		int numPartida = 0;							//CONTADORES PARA PONER EN CADA HUECO DE LOS ARRAYS DE ARRIBA
+		int numPartida = 10;		
+					//CONTADORES PARA PONER EN CADA HUECO DE LOS ARRAYS DE ARRIBA
 
 		System.out.println("Benvingut al laberint de pepito");
 
@@ -44,124 +47,38 @@ public class laberint_pepito {
 			teclat.nextLine();
 
 			// CAS DE JUGAR PARTIDA
-			if (resposta == 1) {
+			if (resposta == 1 ) {
 
+				if(numPartida <=10){
+
+				String laberint[][];
 				boolean sortirPartida = false;
-
 				System.out.println("Quin nivell de dificultat vols anar?(1,2,3)");
 				int nivell = teclat.nextInt();
 				teclat.nextLine();
 				arrayNivells = new int[numPartida];
 				arrayMoviments = new int[numPartida];
+			
 				//arrayArribat;
 
+				//                                          POR PONER MODULARMENTE
 				if (nivell == 1) {
-
-					numPartida++;
-
-					trobarPosicioInicial(laberint1);
-
-					// BUCLE PRIMER NIVELL
-					while (!sortirPartida) {
-
-
-						boolean arribat = false;
-						mostrarMatriu(laberint1);
-						System.out.println("Quina acció vols fer? w = pujar, s = baixar, a = esquerra, d = dreta, q = sortir ");
-						String moviment = teclat.nextLine();
-						if (moviment.equalsIgnoreCase("q") || arribat == true) {
-
-							System.out.println("aaaaa");
-
-							if (arribat == true) { // PONER ARRAY WINS arrayArribat
-
-							}
-							sortirPartida = true;
-						} else {
-
-							moviments++;
-							System.out.println("bbbbbb");
-							modificarPosicio(laberint1, moviment);
-
-						}
-
-					}
-
-				//	arrayMoviments[numPartida] = moviments;
-
+					laberint = laberint1;
 				} else if (nivell == 2) {
-
-					numPartida++;
-
-					trobarPosicioInicial(laberint2);
-
-					// BUCLE SEGON NIVELL
-					while (!sortirPartida) {
-
-						boolean arribat = false;
-						mostrarMatriu(laberint2);
-						System.out.println("Quina acció vols fer? w = pujar, s = baixar, a = esquerra, d = dreta, q = sortir ");
-						String moviment = teclat.nextLine();
-						if (moviment.equalsIgnoreCase("q") || arribat == true) {
-
-							if (arribat == true) { // PONER ARRAY WINS arrayArribat
-
-							//	arrayArribat[numPartida] = true;
-
-							}
-							sortirPartida = true;
-						} else {
-
-							moviments++;
-							System.out.println("cccccc");
-							modificarPosicio(laberint2, moviment);
-							
-						}
-					}
-
-
-					//arrayMoviments
-
-
-
+					laberint = laberint2;
 				} else if (nivell == 3) {
-
-					numPartida++;
-
-					trobarPosicioInicial(laberint3);
-
-
-					// BUCLE TERCER NIVELL
-					while (!sortirPartida) {
-
-						boolean arribat = false;
-						mostrarMatriu(laberint3);
-						System.out.println("Quina acció vols fer? w = pujar, s = baixar, a = esquerra, d = dreta, q = sortir ");
-						String moviment = teclat.nextLine();
-
-						if (moviment.equalsIgnoreCase("q") || arribat == true) {
-
-							if (arribat == true) { // PONER ARRAY WINS arrayArribat
-
-							}
-							sortirPartida = true;
-						} else {
-
-							moviments++;
-							System.out.println("dddddd");
-							modificarPosicio(laberint3, moviment);
-							
-
-						}
-
-					}
-
+					laberint = laberint3;
 				} else {
-
 					System.out.println("Numero incorrecte!!");
-
 				}
 
+				partida(laberint, arrayNivells, arrayMoviments, arrayArribat, teclat);
+
+
+			} else {
+
+				System.out.println("Partides maximes complertes!!");
+			}
 				// Cas de MIRAR la llista de partides
 			} else if (resposta == 2) {
 
@@ -186,6 +103,8 @@ public class laberint_pepito {
 
 	}
 
+
+
 	public static void mostrarMatriu(String matriu[][]) {
 
 		for (int i = 0; i < matriu.length; i++) {
@@ -196,54 +115,33 @@ public class laberint_pepito {
 			}
 			System.out.println();
 		}
-
 	}
 	public static void modificarPosicio(String matriu[][], String moviment) {
 
 		int x=0;
 		int y=0;
 
-		
-
 		if (moviment.equalsIgnoreCase("W")) {
-
 			y--;
-
 			mouresAmunt(matriu,x,y);
-
-
 		} else if (moviment.equalsIgnoreCase("A")) {
-
 			x--;
-		
-			mouresAmunt(matriu,x,y);
-
-
+			mouresEsquerra(matriu, x, y);
 		} else if (moviment.equalsIgnoreCase("S")) {
-
 			y++;
-			
-
-			mouresAmunt(matriu,x,y);
-
-
+			mouresAbaix(matriu,x,y);
 		} else if (moviment.equalsIgnoreCase("D")) {
 			x++;
-			mouresAmunt(matriu,x,y);
+			mouresDreta(matriu,x,y);
 
 		} else {
-
 			System.out.println("Tecla incorrecte!");
-
 		}
-
-
 	}
 
 	public static void mouresAmunt(String matriu[][], int x,int y) {
 
-
-		if(x<0 && x>matriu.length || y<0 && y<matriu.length){
+		if(x<0 && x>matriu.length || y<0 && y>matriu[0].length){
 
 			System.out.println("Et surts del laberint!");
 
@@ -254,11 +152,15 @@ public class laberint_pepito {
 	
 					if(i == x && j == y){
 						
-						if(matriu[x][y-1].equalsIgnoreCase(" ")){
+						if(matriu[x][y-1].equalsIgnoreCase(" ") || matriu[x][y-1].equalsIgnoreCase("S")){
 	
 							matriu[x][y-1] = "P";
 							matriu[x][y] = " ";
-	
+
+							if(matriu[x][y-1].equalsIgnoreCase("S")){
+
+							}
+
 						} else {
 	
 							System.out.println("NO ES POT ANAR");
@@ -273,9 +175,9 @@ public class laberint_pepito {
 
 	}
 
-	public static char mouresAbaix(String matriu[][], int x,int y) {
+	public static void mouresAbaix(String matriu[][], int x,int y) {
 
-		if(x<0 && x>matriu.length || y<0 && y<matriu.length){
+		if(x<0 && x>matriu.length || y<0 && y>matriu[0].length){
 
 			System.out.println("Et surts del laberint!");
 
@@ -303,19 +205,71 @@ public class laberint_pepito {
 
 		}
 
+	}
 
+	public static void mouresDreta(String matriu[][], int x,int y) {
 
+		if(x<0 && x>matriu.length || y<0 && y>matriu[0].length){
+
+			System.out.println("Et surts del laberint!");
+
+		} else {
+
+			for(int i=0 ;i<matriu.length;i++){
+				for(int j=0;j<matriu[i].length;j++){
+	
+					if(i == x && j == y){
+						
+						if(matriu[x][y+1].equalsIgnoreCase(" ")){
+	
+							matriu[x][y+1] = "P";
+							matriu[x][y] = " ";
+	
+						} else {
+	
+							System.out.println("NO ES POT ANAR");
+	
+						}
+	
+					}
+				}
+			}
+
+		}
 
 	}
 
-	public static char mouresDreta(String matriu[][], int x,int y) {
+	public static void mouresEsquerra(String matriu[][], int x,int y) {
+
+		if(x<0 && x>matriu.length || y<0 && y>matriu[0].length){
+
+			System.out.println("Et surts del laberint!");
+
+		} else {
+
+			for(int i=0 ;i<matriu.length;i++){
+				for(int j=0;j<matriu[i].length;j++){
+	
+					if(i == x && j == y){
+						
+						if(matriu[x][y+1].equalsIgnoreCase(" ")){
+	
+							matriu[x][y+1] = "P";
+							matriu[x][y] = " ";
+	
+						} else {
+	
+							System.out.println("NO ES POT ANAR");
+	
+						}
+	
+					}
+				}
+			}
+
+		}
 
 	}
-
-	public static char mouresEsquerra(String matriu[][], int x,int y) {
-
-	}
-
 
 
 	public static void resultats(int partides[], int moviments[], boolean sortit[]) {
@@ -323,6 +277,42 @@ public class laberint_pepito {
 		for (int i = 0; i < partides.length; i++) {
 			System.out.println("partides: " + partides[i] + ", moviments: " + moviments[i] + ", ha sortit: " + sortit[i]);
 		}
+
+	}
+
+	public static void partida(String matriu[][], int nivells[], int moviments[], boolean sortit[], Scanner teclat){
+
+		int numPartida;
+		boolean sortirPartida=false;
+		int movimentsPartida=0;
+
+		trobarPosicioInicial(matriu);
+
+		// BUCLE PRIMER NIVELL
+		while (!sortirPartida) {
+
+			boolean arribat = false;
+			mostrarMatriu(matriu);
+			System.out.println("Quina acció vols fer? w = pujar, s = baixar, a = esquerra, d = dreta, q = sortir ");
+			String moviment = teclat.nextLine();
+			if (moviment.equalsIgnoreCase("q") || arribat == true) {
+
+				System.out.println("aaaaa");
+				if (arribat == true) { // PONER ARRAY WINS arrayArribat
+
+				}
+				sortirPartida = true;
+			} else {
+
+				movimentsPartida++;
+				System.out.println("bbbbbb");
+				modificarPosicio(matriu, moviment);
+
+			}
+
+		}
+
+	//	arr
 
 	}
 
@@ -358,7 +348,6 @@ public class laberint_pepito {
 		}
 
 		
-
 	}
 
 	/*						if (moviment.equalsIgnoreCase("W")) {

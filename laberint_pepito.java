@@ -1,13 +1,21 @@
 import java.util.IntSummaryStatistics;
 import java.util.Scanner;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
 
 
 public class laberint_pepito {
 
-	public static void main(String[] args) {
+
+	public static void main(String[] args) throws FileNotFoundException {
 		// TODO Auto-generated method stub
 
 		Scanner teclat = new Scanner(System.in);
+		File fitxer = new File("C:\\Users\\Albert\\Desktop\\M3\\Laberint.txt");
+		PrintWriter fitxerSortida = new PrintWriter(fitxer);
+
+		//CERRAR fitxerSortida!!!!
 
 		String laberint1[][] = { { "M", "M", " ", " ", " " },			//LABERINTOS
 				{ " ", "M", " ", "M", " " },	
@@ -27,8 +35,8 @@ public class laberint_pepito {
 				{ "M", " ", "M", " ", " ", "M", "M", "M" },
 				{ " ", " ", " ", " ", " ", " ", " ", "M" } };
 
-		int arrayNivells[]; 
-		int arrayMoviments[];						//ARRAYS DE RESULTADOS
+		int arrayNivells[] = new int[0]; 
+		int arrayMoviments[]= new int[0];						//ARRAYS DE RESULTADOS
 		boolean arrayArribat[];
 
 		boolean sortirJoc = false;
@@ -51,33 +59,36 @@ public class laberint_pepito {
 
 				if(numPartida <=10){
 
-				String laberint[][];
+				String laberint[][] = new String[1][1];
 				boolean sortirPartida = false;
 				System.out.println("Quin nivell de dificultat vols anar?(1,2,3)");
 				int nivell = teclat.nextInt();
 				teclat.nextLine();
 				arrayNivells = new int[numPartida];
 				arrayMoviments = new int[numPartida];
-			
 				//arrayArribat;
 
 				//                                          POR PONER MODULARMENTE
-				if (nivell == 1) {
-					laberint = laberint1;
-				} else if (nivell == 2) {
-					laberint = laberint2;
-				} else if (nivell == 3) {
-					laberint = laberint3;
+				if (nivell == 1 || nivell == 2 || nivell == 3) {
+						
+					if (nivell == 1) {
+						carregarLaberint(laberint, laberint1);
+					}
+					else if (nivell == 2) {
+						carregarLaberint(laberint, laberint2);
+					} else {
+						carregarLaberint(laberint, laberint3);
+					}
+
+				 partida(laberint, arrayNivells, arrayMoviments, teclat);
+
 				} else {
-					System.out.println("Numero incorrecte!!");
+							System.out.println("Numero incorrecte!!");
 				}
-
-				partida(laberint, arrayNivells, arrayMoviments, arrayArribat, teclat);
-
 
 			} else {
 
-				System.out.println("Partides maximes complertes!!");
+				System.out.println("Partides màximes complertes!!");
 			}
 				// Cas de MIRAR la llista de partides
 			} else if (resposta == 2) {
@@ -102,7 +113,6 @@ public class laberint_pepito {
 		System.out.println("Gràcies per jugar amb pepito el perdut!");
 
 	}
-
 
 
 	public static void mostrarMatriu(String matriu[][]) {
@@ -157,7 +167,8 @@ public class laberint_pepito {
 							matriu[x][y-1] = "P";
 							matriu[x][y] = " ";
 
-							if(matriu[x][y-1].equalsIgnoreCase("S")){
+							if(matriu[x][y-1].equalsIgnoreCase("S")){ //si ha arribat
+
 
 							}
 
@@ -271,7 +282,6 @@ public class laberint_pepito {
 
 	}
 
-
 	public static void resultats(int partides[], int moviments[], boolean sortit[]) {
 
 		for (int i = 0; i < partides.length; i++) {
@@ -280,9 +290,9 @@ public class laberint_pepito {
 
 	}
 
-	public static void partida(String matriu[][], int nivells[], int moviments[], boolean sortit[], Scanner teclat){
+	public static void partida(String matriu[][], int nivells[], int moviments[], Scanner teclat){
 
-		int numPartida;
+		int numPartida=0;
 		boolean sortirPartida=false;
 		int movimentsPartida=0;
 
@@ -302,6 +312,8 @@ public class laberint_pepito {
 
 				}
 				sortirPartida = true;
+
+		
 			} else {
 
 				movimentsPartida++;
@@ -309,11 +321,30 @@ public class laberint_pepito {
 				modificarPosicio(matriu, moviment);
 
 			}
-
 		}
+
 
 	//	arr
 
+	}
+
+	public static void carregarLaberint(String matriu1[][], String matriu2[][]){
+
+		int filas = matriu2.length;
+        int columnas = matriu2[0].length;
+
+		matriu1 = new String[filas][columnas];
+		
+		for (int i = 0; i < matriu2.length; i++) {
+			for (int j = 0; j < matriu2[i].length; j++) {
+
+				matriu1[i][j] = matriu2[i][j];
+
+				System.out.print(matriu1[i][j]+ " ");
+			}
+			System.out.println();
+
+		}
 	}
 
 
@@ -328,26 +359,22 @@ public class laberint_pepito {
 
 		} else if (matriu[x+1][y].equalsIgnoreCase(" ")){
 
-
 			matriu[x+1][y] = "P";
-
 
 		} else if (matriu[x][y+1].equalsIgnoreCase(" ")){
 
 			matriu[x][y+1] = "P";
 
-		} else if(matriu[x-1][y].equalsIgnoreCase(" ")){
+		} else if(matriu[x+1][y+1].equalsIgnoreCase(" ")){
 
+			matriu[x+1][y+1]= "P";
 
-			matriu[x-1][y]= "P";
+		} else {
 
-		} else if(matriu[x][y-1].equalsIgnoreCase(" ")){
-
-			matriu[x][y-1] = "P";
+			System.err.println("Entrada invalida");
 
 		}
-
-		
+	
 	}
 
 	/*						if (moviment.equalsIgnoreCase("W")) {

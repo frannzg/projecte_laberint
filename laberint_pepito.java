@@ -4,7 +4,6 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 
-
 public class laberint_pepito {
 
 
@@ -392,4 +391,52 @@ public class laberint_pepito {
 							} */
 	
 
-}///q4w33
+/*
+ * TROBAR POSICIO PEPITO
+ * 
+ *     public static int[] trobarPosicioPepito(String[][] matriu) {
+        int[] posPepito = new int[2];
+        for (int i = 0; i < matriu.length; i++) {
+            for (int j = 0; j < matriu[i].length; j++) {
+                if (matriu[i][j].equalsIgnoreCase("P")) {
+                    posPepito[0] = i;
+                    posPepito[1] = j;
+                    return posPepito;
+                }
+            }
+        }
+        return posPepito;
+    }
+ */
+
+ /*
+  * MODIFICAR POSICIO 
+
+  public static void modificarPosicio(String[][] matriu, String moviment) {
+        int[] posPepito = trobarPosicioPepito(matriu);
+        int x = posPepito[1];
+        int y = posPepito[0];
+
+        switch (moviment.toUpperCase()) {
+            case "W":
+                mouresAmunt(matriu, x, y);
+                break;
+            case "A":
+                mouresEsquerra(matriu, x, y);
+                break;
+            case "S":
+                mouresAbaix(matriu, x, y);
+                break;
+            case "D":
+                mouresDreta(matriu, x, y);
+                break;
+            default:
+                System.out.println("Tecla incorrecta!");
+        }
+    }
+
+  */
+
+
+
+}/

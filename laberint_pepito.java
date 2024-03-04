@@ -6,42 +6,49 @@ import java.io.PrintWriter;
 
 public class laberint_pepito {
 
+	public static int x = 0;
+	public static int y = 0;
 
 	public static void main(String[] args) throws FileNotFoundException {
 		// TODO Auto-generated method stub
 
 		Scanner teclat = new Scanner(System.in);
-		File fitxer = new File("C:\\Users\\Albert\\Desktop\\M3\\Laberint.txt");
-		PrintWriter fitxerSortida = new PrintWriter(fitxer);
+		/*
+		 * File fitxer = new File("C:\\Users\\Albert\\Desktop\\M3\\Laberint.txt");
+		 * PrintWriter fitxerSortida = new PrintWriter(fitxer);
+		 */
+		// CERRAR fitxerSortida!!!!
 
-		//CERRAR fitxerSortida!!!!
-
-		String laberint1[][] = { { "M", "M", " ", " ", " " },			//LABERINTOS
-				{ " ", "M", " ", "M", " " },	
+		// LABERINTOS
+		String laberint1[][] = {
+				{ "M ", "M", " ", " ", " " },
+				{ " ", "M", " ", "M", " " },
 				{ " ", " ", " ", "M", " " },
 				{ " ", "M", " ", "M", "S" },
 				{ "M", "M", " ", "M", "M" } };
 
-		String laberint2[][] = { { "M", " ", "M", "M", " ", "M", "S" },
+		String laberint2[][] = {
+				{ "M", " ", "M", "M", " ", "M", "S" },
 				{ "M", " ", "M", " ", " ", "M", " " },
 				{ " ", " ", "M", " ", "M", "M", " " },
 				{ " ", "M", "M", " ", " ", " ", " " },
 				{ " ", " ", " ", " ", "M", "M", "M" } };
 
-		String laberint3[][] = { { " ", "M", "M", "M", " ", " ", " ", "M" },
+		String laberint3[][] = {
+				{ " ", "M", "M", "M", " ", " ", " ", "M" },
 				{ " ", " ", "M", " ", " ", "M", " ", "M" },
 				{ "M", " ", "M", " ", "M", "M", " ", "S" },
 				{ "M", " ", "M", " ", " ", "M", "M", "M" },
 				{ " ", " ", " ", " ", " ", " ", " ", "M" } };
 
-		int arrayNivells[] = new int[0]; 
-		int arrayMoviments[]= new int[0];						//ARRAYS DE RESULTADOS
+		int arrayNivells[] = new int[0];
+		int arrayMoviments[] = new int[0]; // ARRAYS DE RESULTADOS
 		boolean arrayArribat[];
 
 		boolean sortirJoc = false;
 		int moviments = 0;
-		int numPartida = 10;		
-					//CONTADORES PARA PONER EN CADA HUECO DE LOS ARRAYS DE ARRIBA
+		int numPartida = 10;
+		// CONTADORES PARA PONER EN CADA HUECO DE LOS ARRAYS DE ARRIBA
 
 		System.out.println("Benvingut al laberint de pepito");
 
@@ -54,47 +61,45 @@ public class laberint_pepito {
 			teclat.nextLine();
 
 			// CAS DE JUGAR PARTIDA
-			if (resposta == 1 ) {
+			if (resposta == 1) {
 
-				if(numPartida <=10){
+				if (numPartida <= 10) {
 
-				String laberint[][] = new String[1][1];
-				boolean sortirPartida = false;
-				System.out.println("Quin nivell de dificultat vols anar?(1,2,3)");
-				int nivell = teclat.nextInt();
-				teclat.nextLine();
-				arrayNivells = new int[numPartida];
-				arrayMoviments = new int[numPartida];
-				//arrayArribat;
+					String laberint[][] = new String[1][1];
+					boolean sortirPartida = false;
+					System.out.println("Quin nivell de dificultat vols anar?(1,2,3)");
+					int nivell = teclat.nextInt();
+					teclat.nextLine();
+					arrayNivells = new int[numPartida];
+					arrayMoviments = new int[numPartida];
+					// arrayArribat;
 
-				//                                          POR PONER MODULARMENTE
-				if (nivell == 1 || nivell == 2 || nivell == 3) {
-						
-					if (nivell == 1) {
-						carregarLaberint(laberint, laberint1);
-					}
-					else if (nivell == 2) {
-						carregarLaberint(laberint, laberint2);
+					// POR PONER MODULARMENTE
+					if (nivell == 1 || nivell == 2 || nivell == 3) {
+
+						if (nivell == 1) {
+							partida(laberint1, arrayNivells, arrayMoviments, teclat);
+						} else if (nivell == 2) {
+							partida(laberint2, arrayNivells, arrayMoviments, teclat);
+						} else {
+							partida(laberint3, arrayNivells, arrayMoviments, teclat);
+						}
+
+						// partida(laberint, arrayNivells, arrayMoviments, teclat);
+
 					} else {
-						carregarLaberint(laberint, laberint3);
+						System.out.println("Numero incorrecte!!");
 					}
-
-				 partida(laberint, arrayNivells, arrayMoviments, teclat);
 
 				} else {
-							System.out.println("Numero incorrecte!!");
+
+					System.out.println("Partides màximes complertes!!");
 				}
-
-			} else {
-
-				System.out.println("Partides màximes complertes!!");
-			}
 				// Cas de MIRAR la llista de partides
 			} else if (resposta == 2) {
 
 				System.out.println("RESULTATS");
 				// resultats(arrayNivells,arrayMoviments,arrayArribat);
-
 
 				// SORTIDA DEL JOC
 			} else if (resposta == 3) {
@@ -113,7 +118,6 @@ public class laberint_pepito {
 
 	}
 
-
 	public static void mostrarMatriu(String matriu[][]) {
 
 		for (int i = 0; i < matriu.length; i++) {
@@ -125,177 +129,84 @@ public class laberint_pepito {
 			System.out.println();
 		}
 	}
+
 	public static void modificarPosicio(String matriu[][], String moviment) {
 
-		int x=0;
-		int y=0;
-
 		if (moviment.equalsIgnoreCase("W")) {
-			y--;
-			mouresAmunt(matriu,x,y);
+
+			mouresAmunt(matriu);
 		} else if (moviment.equalsIgnoreCase("A")) {
-			x--;
-			mouresEsquerra(matriu, x, y);
+
+			mouresEsquerra(matriu);
 		} else if (moviment.equalsIgnoreCase("S")) {
-			y++;
-			mouresAbaix(matriu,x,y);
+
+			mouresAbaix(matriu);
 		} else if (moviment.equalsIgnoreCase("D")) {
-			x++;
-			mouresDreta(matriu,x,y);
+
+			mouresDreta(matriu);
 
 		} else {
 			System.out.println("Tecla incorrecte!");
 		}
 	}
 
-	public static void mouresAmunt(String matriu[][], int x,int y) {
-
-		if(x<0 && x>matriu.length || y<0 && y>matriu[0].length){
-
-			System.out.println("Et surts del laberint!");
-
+	public static void mouresEsquerra(String[][] matriu) {
+		if (y > 0 && !matriu[x][y - 1].equals("M")) {
+			matriu[x][y] = " ";
+			y--;
+			matriu[x][y] = "P";
 		} else {
-
-			for(int i=0 ;i<matriu.length;i++){
-				for(int j=0;j<matriu[i].length;j++){
-	
-					if(i == x && j == y){
-						
-						if(matriu[x][y-1].equalsIgnoreCase(" ") || matriu[x][y-1].equalsIgnoreCase("S")){
-	
-							matriu[x][y-1] = "P";
-							matriu[x][y] = " ";
-
-							if(matriu[x][y-1].equalsIgnoreCase("S")){ //si ha arribat
-
-
-							}
-
-						} else {
-	
-							System.out.println("NO ES POT ANAR");
-	
-						}
-	
-					}
-				}
-			}
-
+			System.out.println("Moviment no vàlid!");
 		}
-
 	}
 
-	public static void mouresAbaix(String matriu[][], int x,int y) {
-
-		if(x<0 && x>matriu.length || y<0 && y>matriu[0].length){
-
-			System.out.println("Et surts del laberint!");
+	public static void mouresAmunt(String[][] matriu) {
+		if (x > 0 && !matriu[x - 1][y].equals("M")) {
+			matriu[x][y] = " ";
+			x--;
+			matriu[x][y] = "P";
 
 		} else {
-
-			for(int i=0 ;i<matriu.length;i++){
-				for(int j=0;j<matriu[i].length;j++){
-	
-					if(i == x && j == y){
-						
-						if(matriu[x][y+1].equalsIgnoreCase(" ")){
-	
-							matriu[x][y+1] = "P";
-							matriu[x][y] = " ";
-	
-						} else {
-	
-							System.out.println("NO ES POT ANAR");
-	
-						}
-	
-					}
-				}
-			}
-
+			System.out.println("Moviment no vàlid!");
 		}
-
 	}
 
-	public static void mouresDreta(String matriu[][], int x,int y) {
-
-		if(x<0 && x>matriu.length || y<0 && y>matriu[0].length){
-
-			System.out.println("Et surts del laberint!");
-
+	public static void mouresAbaix(String[][] matriu) {
+		if (x < matriu[x].length - 1 && !matriu[x + 1][y].equals("M")) {
+			matriu[x][y] = " ";
+			x++;
+			matriu[x][y] = "P";
 		} else {
-
-			for(int i=0 ;i<matriu.length;i++){
-				for(int j=0;j<matriu[i].length;j++){
-	
-					if(i == x && j == y){
-						
-						if(matriu[x][y+1].equalsIgnoreCase(" ")){
-	
-							matriu[x][y+1] = "P";
-							matriu[x][y] = " ";
-	
-						} else {
-	
-							System.out.println("NO ES POT ANAR");
-	
-						}
-	
-					}
-				}
-			}
-
+			System.out.println("Moviment no vàlid!");
 		}
-
 	}
 
-	public static void mouresEsquerra(String matriu[][], int x,int y) {
-
-		if(x<0 && x>matriu.length || y<0 && y>matriu[0].length){
-
-			System.out.println("Et surts del laberint!");
-
+	public static void mouresDreta(String[][] matriu) {
+		if (y < matriu.length - 1 && !matriu[x][y + 1].equals("M")) {
+			matriu[x][y] = " ";
+			y++;
+			matriu[x][y] = "P";
 		} else {
-
-			for(int i=0 ;i<matriu.length;i++){
-				for(int j=0;j<matriu[i].length;j++){
-	
-					if(i == x && j == y){
-						
-						if(matriu[x][y+1].equalsIgnoreCase(" ")){
-	
-							matriu[x][y+1] = "P";
-							matriu[x][y] = " ";
-	
-						} else {
-	
-							System.out.println("NO ES POT ANAR");
-	
-						}
-	
-					}
-				}
-			}
-
+			System.out.println("Moviment no vàlid!");
 		}
-
 	}
 
 	public static void resultats(int partides[], int moviments[], boolean sortit[]) {
 
 		for (int i = 0; i < partides.length; i++) {
-			System.out.println("partides: " + partides[i] + ", moviments: " + moviments[i] + ", ha sortit: " + sortit[i]);
+			System.out
+					.println("partides: " + partides[i] + ", moviments: " + moviments[i] + ", ha sortit: " + sortit[i]);
 		}
 
 	}
 
-	public static void partida(String matriu[][], int nivells[], int moviments[], Scanner teclat){
+	public static void partida(String matriu[][], int nivells[], int moviments[], Scanner teclat) {
 
-		int numPartida=0;
-		boolean sortirPartida=false;
-		int movimentsPartida=0;
+		int numPartida = 0;
+		boolean sortirPartida = false;
+		int movimentsPartida = 0;
 
-		trobarPosicioInicial(matriu);
+		trobarPosicioInicial(matriu, x, y);
 
 		// BUCLE PRIMER NIVELL
 		while (!sortirPartida) {
@@ -312,7 +223,6 @@ public class laberint_pepito {
 				}
 				sortirPartida = true;
 
-		
 			} else {
 
 				movimentsPartida++;
@@ -321,122 +231,54 @@ public class laberint_pepito {
 
 			}
 		}
-
-
-	//	arr
-
 	}
 
-	public static void carregarLaberint(String matriu1[][], String matriu2[][]){
+	public static void carregarLaberint(String matriu1[][], String matriu2[][]) {
 
 		int filas = matriu2.length;
-        int columnas = matriu2[0].length;
+		int columnas = matriu2[0].length;
 
 		matriu1 = new String[filas][columnas];
-		
+
 		for (int i = 0; i < matriu2.length; i++) {
 			for (int j = 0; j < matriu2[i].length; j++) {
 
 				matriu1[i][j] = matriu2[i][j];
 
-				System.out.print(matriu1[i][j]+ " ");
+				System.out.print(matriu1[i][j] + " ");
 			}
 			System.out.println();
 
 		}
 	}
 
+	public static void trobarPosicioInicial(String matriu[][], int x, int y) {
 
-	public static void trobarPosicioInicial(String matriu[][]){
-
-		int x = 0;
-		int y = 0;
-	
-		if(matriu[x][y].equalsIgnoreCase(" ")){
+		if (matriu[x][y].equalsIgnoreCase(" ")) {
 
 			matriu[x][y] = "P";
 
-		} else if (matriu[x+1][y].equalsIgnoreCase(" ")){
+		} else if (matriu[x + 1][y].equalsIgnoreCase(" ")) {
 
-			matriu[x+1][y] = "P";
+			matriu[x + 1][y] = " ";
+			x++;
+		} else if (matriu[x][y + 1].equalsIgnoreCase(" ")) {
 
-		} else if (matriu[x][y+1].equalsIgnoreCase(" ")){
+			matriu[x][y + 1] = "P";
+			y++;
 
-			matriu[x][y+1] = "P";
+		} else if (matriu[x + 1][y + 1].equalsIgnoreCase(" ")) {
 
-		} else if(matriu[x+1][y+1].equalsIgnoreCase(" ")){
-
-			matriu[x+1][y+1]= "P";
+			matriu[x + 1][y + 1] = "P";
+			x++;
+			y++;
 
 		} else {
 
 			System.err.println("Entrada invalida");
 
 		}
-	
+
 	}
 
-	/*						if (moviment.equalsIgnoreCase("W")) {
-
-							} else if (moviment.equalsIgnoreCase("A")) {
-
-							} else if (moviment.equalsIgnoreCase("S")) {
-
-							} else if (moviment.equalsIgnoreCase("D")) {
-
-							} else {
-
-								System.out.println("Tecla incorrecte!");
-
-							} */
-	
-
-/*
- * TROBAR POSICIO PEPITO
- * 
- *     public static int[] trobarPosicioPepito(String[][] matriu) {
-        int[] posPepito = new int[2];
-        for (int i = 0; i < matriu.length; i++) {
-            for (int j = 0; j < matriu[i].length; j++) {
-                if (matriu[i][j].equalsIgnoreCase("P")) {
-                    posPepito[0] = i;
-                    posPepito[1] = j;
-                    return posPepito;
-                }
-            }
-        }
-        return posPepito;
-    }
- */
-
- /*
-  * MODIFICAR POSICIO 
-
-  public static void modificarPosicio(String[][] matriu, String moviment) {
-        int[] posPepito = trobarPosicioPepito(matriu);
-        int x = posPepito[1];
-        int y = posPepito[0];
-
-        switch (moviment.toUpperCase()) {
-            case "W":
-                mouresAmunt(matriu, x, y);
-                break;
-            case "A":
-                mouresEsquerra(matriu, x, y);
-                break;
-            case "S":
-                mouresAbaix(matriu, x, y);
-                break;
-            case "D":
-                mouresDreta(matriu, x, y);
-                break;
-            default:
-                System.out.println("Tecla incorrecta!");
-        }
-    }
-
-  */
-
-
-
-}/
+}

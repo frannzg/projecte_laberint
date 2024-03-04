@@ -392,4 +392,4 @@ public class laberint_pepito {
 							} */
 	
 
-}
+}///q4w33

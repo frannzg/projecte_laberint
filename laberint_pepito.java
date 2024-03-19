@@ -13,9 +13,9 @@ public class laberint_pepito {
 		// TODO Auto-generated method stub
 
 		Scanner teclat = new Scanner(System.in);
-		/*
-		 * File fitxer = new File("C:\\Users\\Albert\\Desktop\\M3\\Laberint.txt");
-		 * PrintWriter fitxerSortida = new PrintWriter(fitxer);
+		
+		 File fitxer = new File("C:\\Users\\Albert\\Desktop\\M3\\Laberint.txt");
+		 /* PrintWriter fitxerSortida = new PrintWriter(fitxer);
 		 */
 		// CERRAR fitxerSortida!!!!
 
@@ -316,6 +316,8 @@ public class laberint_pepito {
 
 		//PEGAR Y RESETEAR MATRIZ 
 
+		//guardaNivell(matriu); FICHERO GUARDAR NIVEL
+
 
 	}
 
@@ -347,6 +349,39 @@ public class laberint_pepito {
 		teclat.nextLine();
 
 		return quantitatPartides;
+	}
+
+
+	public static void guardaNivell(String matriu[][]){
+
+
+		try {
+			
+			File fichero = new File("C:\\Users\\Albert\\Desktop\\M3\\laberint.txt");
+			Scanner scFichero = new Scanner(fichero);
+			
+			PrintWriter fitxer= new PrintWriter(fichero);
+	
+
+	
+			while(scFichero.hasNextLine()) { //MIRA SI HAY SIGUIENTE PALABRA
+				
+				scFichero.nextLine(); //LEE LA PAALABRA
+				
+			}
+
+			
+			//fitxer.print();
+			
+		} catch(Exception e) {
+			
+			System.out.println("NO HI HA ARXIU");
+			System.out.println(e);
+			
+		
+			
+		}
+		
 	}
 
 	

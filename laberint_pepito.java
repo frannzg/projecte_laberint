@@ -13,9 +13,10 @@ public class laberint_pepito {
 		// TODO Auto-generated method stub
 
 		Scanner teclat = new Scanner(System.in);
-		
-		 File fitxer = new File("C:\\Users\\Albert\\Desktop\\M3\\Laberint.txt");
-		 /* PrintWriter fitxerSortida = new PrintWriter(fitxer);
+
+		File fitxer = new File("C:\\Users\\Albert\\Desktop\\M3\\Laberint.txt");
+		/*
+		 * PrintWriter fitxerSortida = new PrintWriter(fitxer);
 		 */
 		// CERRAR fitxerSortida!!!!
 
@@ -47,7 +48,7 @@ public class laberint_pepito {
 
 		boolean sortirJoc = false;
 		int numPartida = 0;
-		int quantitatPartidesMax = 10; //POR PREGUNTAR AL PROFE SI ES PREGUNTANDO AL USUARIO
+		int quantitatPartidesMax = 10; // POR PREGUNTAR AL PROFE SI ES PREGUNTANDO AL USUARIO
 		// CONTADORES PARA PONER EN CADA HUECO DE LOS ARRAYS DE ARRIBA
 
 		System.out.println("Benvingut al laberint de pepito");
@@ -69,35 +70,44 @@ public class laberint_pepito {
 					System.out.println("Quin nivell de dificultat vols anar?(1,2,3)");
 					int nivell = teclat.nextInt();
 					teclat.nextLine();
-					arrayNivells = new int[numPartida+1]; //ESTA MAL, esta por cambiar
-					arrayMoviments = new int[numPartida+1];
+					arrayNivells = new int[numPartida + 1]; // ESTA MAL, esta por cambiar
+					arrayMoviments = new int[numPartida + 1];
 					// arrayArribat;
 
 					// POR PONER MODULARMENTE
 					String laberint[][] = new String[1][1];
 
-					if (nivell == 1 || nivell == 2 || nivell == 3) { //TODO ESTA SECCION ESTA PENDIENTE
-																	// DE QUE SE CARGUE CORRECTAMENTE EL LABERINTO DE FORMA MODULAR 
+					if (nivell == 1 || nivell == 2 || nivell == 3) { // TODO ESTA SECCION ESTA PENDIENTE
+																		// DE QUE SE CARGUE CORRECTAMENTE EL LABERINTO
+																		// DE FORMA MODULAR
 
-						// ATENCION!!!!!!!!!!! -> si repites otra vez el mismo nivel "peta" al no cargar el laberintoX al laberinto global "laberint"
+						// ATENCION!!!!!!!!!!! -> si repites otra vez el mismo nivel "peta" al no cargar
+						// el laberintoX al laberinto global "laberint"
 
 						if (nivell == 1) {
-							carregarLaberint(laberint, laberint1); //CARGAR LABERINTO MONTADO AL LABERINTO "GENERAL"
-							//partida(laberint1, numPartida, arrayNivells, arrayMoviments, teclat); 
-							arrayNivells[numPartida] = 1; //*SETEO DE NUMERO DE PARTIDA EN EL ARRAY RESULTADOS ----PROVISIONAL */
+							// carregarLaberint(laberint, laberint1); //CARGAR LABERINTO MONTADO AL
+							// LABERINTO "GENERAL"
+							partida(laberint1, numPartida, arrayNivells, arrayMoviments, teclat);
+							arrayNivells[numPartida] = 1; // *SETEO DE NUMERO DE PARTIDA EN EL ARRAY RESULTADOS
+															// ----PROVISIONAL */
 
 						} else if (nivell == 2) {
-							arrayNivells[numPartida] = 2; //*SETEO DE NUMERO DE PARTIDA EN EL ARRAY RESULTADOS ----PROVISIONAL *//
-							carregarLaberint(laberint, laberint2); //CARGAR LABERINTO MONTADO AL LABERINTO "GENERAL"
-							//partida(laberint2, numPartida, arrayNivells, arrayMoviments, teclat);
+							arrayNivells[numPartida] = 2; // *SETEO DE NUMERO DE PARTIDA EN EL ARRAY RESULTADOS
+															// ----PROVISIONAL *//
+							// carregarLaberint(laberint, laberint2); //CARGAR LABERINTO MONTADO AL
+							// LABERINTO "GENERAL"
+							partida(laberint2, numPartida, arrayNivells, arrayMoviments, teclat);
 
 						} else {
-							arrayNivells[numPartida] = 3; //*SETEO DE NUMERO DE PARTIDA EN EL ARRAY RESULTADOS ----PROVISIONAL */
-							carregarLaberint(laberint, laberint3); //CARGAR LABERINTO MONTADO AL LABERINTO "GENERAL"
-							//partida(laberint3, numPartida, arrayNivells, arrayMoviments, teclat); 
+							arrayNivells[numPartida] = 3; // *SETEO DE NUMERO DE PARTIDA EN EL ARRAY RESULTADOS
+															// ----PROVISIONAL */
+							// carregarLaberint(laberint, laberint3); //CARGAR LABERINTO MONTADO AL
+							// LABERINTO "GENERAL"
+							partida(laberint3, numPartida, arrayNivells, arrayMoviments, teclat);
 						}
 
-						//partida(laberint,numPartida, arrayNivells, arrayMoviments, teclat); //--> EJECUCION DE LA PARTIDA CON EL LABERINTO "GENERAL" CARGADO
+						// partida(laberint,numPartida, arrayNivells, arrayMoviments, teclat); //-->
+						// EJECUCION DE LA PARTIDA CON EL LABERINTO "GENERAL" CARGADO
 						numPartida++;
 
 					} else {
@@ -112,7 +122,7 @@ public class laberint_pepito {
 			} else if (resposta == 2) {
 
 				System.out.println("RESULTATS");
-				resultats(arrayNivells,arrayMoviments);
+				resultats(arrayNivells, arrayMoviments);
 
 				// SORTIDA DEL JOC
 			} else if (resposta == 3) {
@@ -158,9 +168,9 @@ public class laberint_pepito {
 
 			arribat = mouresDreta(matriu);
 
-		}	else if (moviment.equalsIgnoreCase("q")) {
+		} else if (moviment.equalsIgnoreCase("q")) {
 
-				System.out.println("HAS SORTIT");
+			System.out.println("HAS SORTIT");
 
 		} else {
 			System.out.println("Tecla incorrecte!");
@@ -169,10 +179,10 @@ public class laberint_pepito {
 	}
 
 	public static boolean mouresEsquerra(String[][] matriu) {
-		boolean arribat=false;
+		boolean arribat = false;
 		if (y > 0 && !matriu[x][y - 1].equals("M")) {
 			matriu[x][y] = " ";
-			if(matriu[x][y-1].equalsIgnoreCase("S")){
+			if (matriu[x][y - 1].equalsIgnoreCase("S")) {
 
 				arribat = true;
 
@@ -182,17 +192,17 @@ public class laberint_pepito {
 			matriu[x][y] = "P";
 		} else {
 			System.out.println("Moviment no vàlid!");
-			
+
 		}
 		return arribat;
 	}
 
 	public static boolean mouresAmunt(String[][] matriu) {
-		boolean arribat=false;
+		boolean arribat = false;
 
 		if (x > 0 && !matriu[x - 1][y].equals("M")) {
 			matriu[x][y] = " ";
-			if(matriu[x-1][y].equalsIgnoreCase("S")){
+			if (matriu[x - 1][y].equalsIgnoreCase("S")) {
 
 				arribat = true;
 				System.out.println("ARRIBAAAATTTTT");
@@ -208,10 +218,10 @@ public class laberint_pepito {
 	}
 
 	public static boolean mouresAbaix(String[][] matriu) {
-		boolean arribat=false;
+		boolean arribat = false;
 		if (x < matriu[x].length - 1 && !matriu[x + 1][y].equals("M")) {
 			matriu[x][y] = " ";
-			if(matriu[x+1][y].equalsIgnoreCase("S")){
+			if (matriu[x + 1][y].equalsIgnoreCase("S")) {
 
 				arribat = true;
 				System.out.println("ARRIBAAAATTTTT");
@@ -226,10 +236,10 @@ public class laberint_pepito {
 	}
 
 	public static boolean mouresDreta(String[][] matriu) {
-		boolean arribat=false;
+		boolean arribat = false;
 		if (y < matriu.length - 1 && !matriu[x][y + 1].equals("M")) {
 			matriu[x][y] = " ";
-			if(matriu[x][y+1].equalsIgnoreCase("S")){
+			if (matriu[x][y + 1].equalsIgnoreCase("S")) {
 
 				arribat = true;
 				System.out.println("ARRIBAAAATTTTT");
@@ -238,16 +248,17 @@ public class laberint_pepito {
 			y++;
 			matriu[x][y] = "P";
 
-
 		} else {
-		
-				System.out.println("Moviment no vàlid!");
-		
+
+			System.out.println("Moviment no vàlid!");
+
 		}
 		return arribat;
 	}
-		
-	public static void resultats(int partides[], int moviments[]) { //A LA ESPERA PARA MODIFICAR LOS ARRAYS DE PUNTUACION Y PONER ARRAY BOOLEANS + ", ha sortit: " + sortit[i]
+
+	public static void resultats(int partides[], int moviments[]) { // A LA ESPERA PARA MODIFICAR LOS ARRAYS DE
+																	// PUNTUACION Y PONER ARRAY BOOLEANS + ", ha sortit:
+																	// " + sortit[i]
 
 		for (int i = 0; i < partides.length; i++) {
 			System.out.println("Nivell partida " + partides[i] + ", moviments: " + moviments[i]);
@@ -256,67 +267,69 @@ public class laberint_pepito {
 	}
 
 	public static void partida(String matriu[][], int numPartida, int nivells[], int moviments[], Scanner teclat) {
-		
-	/* 	x=0;
-		y=0; //SETEO INICIO PARTIDA AL 0 0, porque al iniciar el siguiente laberinto el pepito se posiciona en la ultima posicion de la partida anterior --> PROVISIONAL
-*/
+
+		/*
+		 * x=0;
+		 * y=0; //SETEO INICIO PARTIDA AL 0 0, porque al iniciar el siguiente laberinto
+		 * el pepito se posiciona en la ultima posicion de la partida anterior -->
+		 * PROVISIONAL
+		 */
 		boolean sortirPartida = false;
 		int movimentsPartida = 0;
 		boolean arribat = false;
 
 		System.out.println("AAAAA");
 
-/* 			COMPROBACIÓN SI SE HA CARGADO LA MATRIZ DE FORMA MODULAR 
-
-		for (int i = 0; i < matriu.length; i++) { 
-			for (int j = 0; j < matriu[i].length; j++) {
-
-				matriu[i][j] = matriu[i][j];
-
-				System.out.print(matriu[i][j] + " ");
-			}
-			System.out.println();
-
-		}
-		*/
-		//trobarPosicioInicial(matriu, x, y);
+		/*
+		 * COMPROBACIÓN SI SE HA CARGADO LA MATRIZ DE FORMA MODULAR
+		 * 
+		 * for (int i = 0; i < matriu.length; i++) {
+		 * for (int j = 0; j < matriu[i].length; j++) {
+		 * 
+		 * matriu[i][j] = matriu[i][j];
+		 * 
+		 * System.out.print(matriu[i][j] + " ");
+		 * }
+		 * System.out.println();
+		 * 
+		 * }
+		 */
+		// trobarPosicioInicial(matriu, x, y);
 		mostrarMatriu(matriu);
 		System.out.println("Quina acció vols fer? w = pujar, s = baixar, a = esquerra, d = dreta, q = sortir ");
 		String moviment = teclat.nextLine();
 
 		while (!sortirPartida) {
-		
-	
-				if (moviment.equalsIgnoreCase("q") || arribat == true) {
 
-					if (arribat == true) { // PONER SETEO EN "TRUE" ARRAY WINS arrayArribat 
+			if (moviment.equalsIgnoreCase("q") || arribat == true) {
+
+				if (arribat == true) { // PONER SETEO EN "TRUE" ARRAY WINS arrayArribat
 					System.out.println("LLEGADO");
-					}
-
-					//System.out.println("Has acabat el nivell"); --> IGNORA DE MOMENTO
-
-					sortirPartida = true;
-
-				} else {
-
-					mostrarMatriu(matriu);
-					System.out.println("Quina acció vols fer? w = pujar, s = baixar, a = esquerra, d = dreta, q = sortir ");
-					moviment = teclat.nextLine();
-
-					movimentsPartida++;
-					System.out.println("CAMINANDO");
-					arribat = modificarPosicio(matriu, moviment);
-
 				}
-	
-		} 
 
-		moviments[numPartida] = movimentsPartida; //SETEAR NUM MOVIMIENTOS EN ARRAY MOVIMIENTOS
+				// System.out.println("Has acabat el nivell"); --> IGNORA DE MOMENTO
 
-		//PEGAR Y RESETEAR MATRIZ 
+				sortirPartida = true;
 
-		//guardaNivell(matriu); FICHERO GUARDAR NIVEL
+			} else {
 
+				mostrarMatriu(matriu);
+				System.out.println("Quina acció vols fer? w = pujar, s = baixar, a = esquerra, d = dreta, q = sortir ");
+				moviment = teclat.nextLine();
+
+				movimentsPartida++;
+				System.out.println("CAMINANDO");
+				arribat = modificarPosicio(matriu, moviment);
+
+			}
+
+		}
+
+		moviments[numPartida] = movimentsPartida; // SETEAR NUM MOVIMIENTOS EN ARRAY MOVIMIENTOS
+
+		// PEGAR Y RESETEAR MATRIZ
+
+		// guardaNivell(matriu); FICHERO GUARDAR NIVEL
 
 	}
 
@@ -339,49 +352,42 @@ public class laberint_pepito {
 		}
 	}
 
-	public static int quantitatPartidesPerJugar(Scanner teclat){
+	public static int quantitatPartidesPerJugar(Scanner teclat) {
 
-
-		System.out.println("Quantes partides vols jugar?");//POR PREGUNTAR AL PROFE SI ES PREGUNTANDO AL USUARIO
+		System.out.println("Quantes partides vols jugar?");// POR PREGUNTAR AL PROFE SI ES PREGUNTANDO AL USUARIO
 		int quantitatPartides = teclat.nextInt();
 		teclat.nextLine();
 
 		return quantitatPartides;
 	}
 
-
-	public static void guardaNivell(File fitxer,String matriu[][],int numPartida,int arrayNivells[],int arrayMoviments[]){
-
+	public static void guardaNivell(File fitxer, String matriu[][], int numPartida, int arrayNivells[],
+			int arrayMoviments[]) {
 
 		try {
 
-			PrintWriter pwFitxer= new PrintWriter(fitxer);
-	
-			
+			PrintWriter pwFitxer = new PrintWriter(fitxer);
+
 			pwFitxer.print(matriu.length);
 			pwFitxer.print(matriu.length);
 			pwFitxer.println();
-	/* 
-			while(scFichero.hasNextLine()) { //MIRA SI HAY SIGUIENTE PALABRA
-				
-				scFichero.nextLine(); //LEE LA PAALABRA
-				
-			}
-			*/
-			//fitxer.print();
-			
-		} catch(Exception e) {
-			
+			/*
+			 * while(scFichero.hasNextLine()) { //MIRA SI HAY SIGUIENTE PALABRA
+			 * 
+			 * scFichero.nextLine(); //LEE LA PAALABRA
+			 * 
+			 * }
+			 */
+			// fitxer.print();
+
+		} catch (Exception e) {
+
 			System.out.println("NO HI HA ARXIU");
 			System.out.println(e);
-			
-		
-			
-		}
-		
-	}
 
-	
+		}
+
+	}
 
 	public static void trobarPosicioInicial(String matriu[][], int x, int y) {
 
@@ -391,7 +397,7 @@ public class laberint_pepito {
 
 		} else if (matriu[x + 1][y].equalsIgnoreCase(" ")) {
 
-			matriu[x + 1][y] = " ";
+			matriu[x + 1][y] = "P";
 			x++;
 		} else if (matriu[x][y + 1].equalsIgnoreCase(" ")) {
 
@@ -411,6 +417,5 @@ public class laberint_pepito {
 		}
 
 	}
-
 
 }

@@ -21,7 +21,7 @@ public class laberint_pepito {
 
 		// LABERINTOS
 		String laberint1[][] = {
-				{ "M ", "M", " ", " ", " " },
+				{ "P", "M", " ", " ", " " },
 				{ " ", "M", " ", "M", " " },
 				{ " ", " ", " ", "M", " " },
 				{ " ", "M", " ", "M", "S" },
@@ -82,23 +82,22 @@ public class laberint_pepito {
 						// ATENCION!!!!!!!!!!! -> si repites otra vez el mismo nivel "peta" al no cargar el laberintoX al laberinto global "laberint"
 
 						if (nivell == 1) {
-							//carregarLaberint(laberint, laberint1); //CARGAR LABERINTO MONTADO AL LABERINTO "GENERAL"
-							partida(laberint1, numPartida, arrayNivells, arrayMoviments, teclat); 
+							carregarLaberint(laberint, laberint1); //CARGAR LABERINTO MONTADO AL LABERINTO "GENERAL"
+							//partida(laberint1, numPartida, arrayNivells, arrayMoviments, teclat); 
 							arrayNivells[numPartida] = 1; //*SETEO DE NUMERO DE PARTIDA EN EL ARRAY RESULTADOS ----PROVISIONAL */
 
 						} else if (nivell == 2) {
 							arrayNivells[numPartida] = 2; //*SETEO DE NUMERO DE PARTIDA EN EL ARRAY RESULTADOS ----PROVISIONAL *//
-							//carregarLaberint(laberint, laberint2); //CARGAR LABERINTO MONTADO AL LABERINTO "GENERAL"
-							partida(laberint2, numPartida, arrayNivells, arrayMoviments, teclat);
+							carregarLaberint(laberint, laberint2); //CARGAR LABERINTO MONTADO AL LABERINTO "GENERAL"
+							//partida(laberint2, numPartida, arrayNivells, arrayMoviments, teclat);
 
 						} else {
 							arrayNivells[numPartida] = 3; //*SETEO DE NUMERO DE PARTIDA EN EL ARRAY RESULTADOS ----PROVISIONAL */
-
-							//carregarLaberint(laberint, laberint3); //CARGAR LABERINTO MONTADO AL LABERINTO "GENERAL"
-							partida(laberint3, numPartida, arrayNivells, arrayMoviments, teclat); 
+							carregarLaberint(laberint, laberint3); //CARGAR LABERINTO MONTADO AL LABERINTO "GENERAL"
+							//partida(laberint3, numPartida, arrayNivells, arrayMoviments, teclat); 
 						}
 
-						//partida(laberint, arrayNivells, arrayMoviments, teclat); --> EJECUCION DE LA PARTIDA CON EL LABERINTO "GENERAL" CARGADO
+						//partida(laberint,numPartida, arrayNivells, arrayMoviments, teclat); //--> EJECUCION DE LA PARTIDA CON EL LABERINTO "GENERAL" CARGADO
 						numPartida++;
 
 					} else {
@@ -241,10 +240,9 @@ public class laberint_pepito {
 
 
 		} else {
-			if(!matriu[x][y - 1].equals("M")){
+		
 				System.out.println("Moviment no vàlid!");
-				}
-			System.out.println("aaa");
+		
 		}
 		return arribat;
 	}
@@ -266,6 +264,8 @@ public class laberint_pepito {
 		int movimentsPartida = 0;
 		boolean arribat = false;
 
+		System.out.println("AAAAA");
+
 /* 			COMPROBACIÓN SI SE HA CARGADO LA MATRIZ DE FORMA MODULAR 
 
 		for (int i = 0; i < matriu.length; i++) { 
@@ -279,7 +279,7 @@ public class laberint_pepito {
 
 		}
 		*/
-		trobarPosicioInicial(matriu, x, y);
+		//trobarPosicioInicial(matriu, x, y);
 		mostrarMatriu(matriu);
 		System.out.println("Quina acció vols fer? w = pujar, s = baixar, a = esquerra, d = dreta, q = sortir ");
 		String moviment = teclat.nextLine();
@@ -289,9 +289,8 @@ public class laberint_pepito {
 	
 				if (moviment.equalsIgnoreCase("q") || arribat == true) {
 
-					System.out.println("LLEGADO");
 					if (arribat == true) { // PONER SETEO EN "TRUE" ARRAY WINS arrayArribat 
-
+					System.out.println("LLEGADO");
 					}
 
 					//System.out.println("Has acabat el nivell"); --> IGNORA DE MOMENTO
@@ -343,7 +342,6 @@ public class laberint_pepito {
 	public static int quantitatPartidesPerJugar(Scanner teclat){
 
 
-
 		System.out.println("Quantes partides vols jugar?");//POR PREGUNTAR AL PROFE SI ES PREGUNTANDO AL USUARIO
 		int quantitatPartides = teclat.nextInt();
 		teclat.nextLine();
@@ -352,25 +350,24 @@ public class laberint_pepito {
 	}
 
 
-	public static void guardaNivell(String matriu[][]){
+	public static void guardaNivell(File fitxer,String matriu[][],int numPartida,int arrayNivells[],int arrayMoviments[]){
 
 
 		try {
-			
-			File fichero = new File("C:\\Users\\Albert\\Desktop\\M3\\laberint.txt");
-			Scanner scFichero = new Scanner(fichero);
-			
-			PrintWriter fitxer= new PrintWriter(fichero);
-	
 
+			PrintWriter pwFitxer= new PrintWriter(fitxer);
 	
+			
+			pwFitxer.print(matriu.length);
+			pwFitxer.print(matriu.length);
+			pwFitxer.println();
+	/* 
 			while(scFichero.hasNextLine()) { //MIRA SI HAY SIGUIENTE PALABRA
 				
 				scFichero.nextLine(); //LEE LA PAALABRA
 				
 			}
-
-			
+			*/
 			//fitxer.print();
 			
 		} catch(Exception e) {
@@ -414,5 +411,6 @@ public class laberint_pepito {
 		}
 
 	}
+
 
 }

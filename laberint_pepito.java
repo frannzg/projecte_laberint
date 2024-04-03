@@ -340,8 +340,8 @@ public class laberint_pepito {
 
 		matriu1 = new String[filas][columnas];
 
-		for (int i = 0; i < matriu2.length; i++) {
-			for (int j = 0; j < matriu2[i].length; j++) {
+		for (int i = 0; i < filas; i++) {
+			for (int j = 0; j < columnas; j++) {
 
 				matriu1[i][j] = matriu2[i][j];
 

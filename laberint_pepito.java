@@ -76,7 +76,7 @@ public class laberint_pepito {
 					int dimensioX = 0;
 					int dimensioY = 0;
 
-					if (nivell == 1 || nivell == 2 || nivell == 3) {
+					if (nivell == 1 || nivell == 2 || nivell == 3) { //Selecció del nivell per carregar-lo al laberint "genèric"
 
 						if (nivell == 1) {
 
@@ -101,7 +101,7 @@ public class laberint_pepito {
 							carregarLaberint(laberint, laberint3);
 
 						}
-						partida(laberint, numPartida, arrayNivells, arrayMoviments, arrayArribat, teclat);
+						partida(laberint, numPartida, arrayNivells, arrayMoviments, arrayArribat, teclat); //Execució de la partida
 						numPartida++;
 
 					} else {
@@ -176,7 +176,7 @@ public class laberint_pepito {
 
 		} else if (moviment.equalsIgnoreCase("q")) {
 
-			System.out.println("HAS SORTIT");
+			System.out.println("Has sortit");
 
 		} else {
 			System.out.println("Tecla incorrecte!");
@@ -319,7 +319,7 @@ public class laberint_pepito {
 		System.out.println("Quina acció vols fer? w = pujar, s = baixar, a = esquerra, d = dreta, q = sortir ");
 		String moviment = teclat.nextLine();
 
-		while (!sortirPartida) {
+		while (!sortirPartida) {    //Bucle principal de la partida
 
 			if (moviment.equalsIgnoreCase("q") || arribat == true) {
 
@@ -366,7 +366,6 @@ public class laberint_pepito {
 
 				matriu1[i][j] = matriu2[i][j];
 			}
-			System.out.println();
 
 		}
 	}

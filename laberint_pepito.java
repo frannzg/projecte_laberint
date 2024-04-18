@@ -193,7 +193,12 @@ public class laberint_pepito {
 	 * @return si ha arribat al destí
 	 */
 	public static boolean mouresEsquerra(String[][] matriu) {
+
 		boolean arribat = false;
+		if(dinsRang(matriu, x)){
+
+			System.out.println("dins rang");
+		}
 		if (y > 0 && !matriu[x][y - 1].equals("M")) {
 			matriu[x][y] = " ";
 			if (matriu[x][y - 1].equalsIgnoreCase("S")) {
@@ -247,7 +252,7 @@ public class laberint_pepito {
 	 */
 	public static boolean mouresAbaix(String[][] matriu) {
 		boolean arribat = false;
-		if (x < matriu[x].length - 1 && !matriu[x + 1][y].equals("M")) { // matriu[x].length - 1
+		if (x < matriu[0].length - 1 && !matriu[x + 1][y].equals("M")) { // matriu[x].length - 1
 			matriu[x][y] = " ";
 			if (matriu[x + 1][y].equalsIgnoreCase("S")) {
 				matriu[x+1][y] = "P";
@@ -338,14 +343,12 @@ public class laberint_pepito {
 		int movimentsPartida = 0;
 		boolean arribat = false;
 
-		
-
 		trobarPosicioInicial(matriu, x, y);
-		mostrarMatriu(matriu);
+	
 
-
-		
 		do {
+
+		mostrarMatriu(matriu);
 
 		System.out.println("Quina acció vols fer? w = pujar, s = baixar, a = esquerra, d = dreta, q = sortir ");
 		String moviment = teclat.nextLine();
@@ -355,7 +358,7 @@ public class laberint_pepito {
 			movimentsPartida++;
 			System.out.println("Caminant");
 			arribat = modificarPosicio(matriu, moviment);
-			mostrarMatriu(matriu);
+			
 
 		}
 
@@ -542,10 +545,11 @@ public class laberint_pepito {
 
 		} else {
 
-			System.err.println("Entrada invalida");
+			System.out.println("Entrada invalida");
 
 		}
 
 	}
+
 
 }

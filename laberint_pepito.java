@@ -195,10 +195,7 @@ public class laberint_pepito {
 	public static boolean mouresEsquerra(String[][] matriu) {
 
 		boolean arribat = false;
-		if(dinsRang(matriu, x)){
-
-			System.out.println("dins rang");
-		}
+		
 		if (y > 0 && !matriu[x][y - 1].equals("M")) {
 			matriu[x][y] = " ";
 			if (matriu[x][y - 1].equalsIgnoreCase("S")) {
@@ -252,7 +249,7 @@ public class laberint_pepito {
 	 */
 	public static boolean mouresAbaix(String[][] matriu) {
 		boolean arribat = false;
-		if (x < matriu[0].length - 1 && !matriu[x + 1][y].equals("M")) { // matriu[x].length - 1
+		if (x < matriu.length - 1 && !matriu[x + 1][y].equals("M")) { // matriu[x].length - 1
 			matriu[x][y] = " ";
 			if (matriu[x + 1][y].equalsIgnoreCase("S")) {
 				matriu[x+1][y] = "P";
@@ -275,7 +272,7 @@ public class laberint_pepito {
 	 */
 	public static boolean mouresDreta(String[][] matriu) {
 		boolean arribat = false;
-		if (y < matriu.length - 1 && !matriu[x][y + 1].equals("M")) {
+		if (y < matriu[0].length - 1 && !matriu[x][y + 1].equals("M")) {
 			matriu[x][y] = " ";
 			if (matriu[x][y + 1].equalsIgnoreCase("S")) {
 				matriu[x][y+1] = "P";

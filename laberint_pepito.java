@@ -304,6 +304,8 @@ public class laberint_pepito {
 			File fitxer = new File("C:\\Users\\Albert\\Desktop\\M3\\Resultats.txt");
 			PrintWriter pwFitxer = new PrintWriter(fitxer);
 
+				pwFitxer.println("Resultats de les partides jugades:");
+
 			for (int i = 0; i < partides.length; i++) {
 				System.out.println("Nivell de partida " + partides[i] + ", moviments: " + moviments[i] + ", arribat: "
 						+ arribat[i]);
@@ -501,7 +503,7 @@ public class laberint_pepito {
 				pwFitxer.println();
 
 			}
-			pwFitxer.println("Ha sortit del laberint?: " + arrayArribat[numPartida]);
+			pwFitxer.println("Ha sortit?: " + arrayArribat[numPartida]);
 
 			pwFitxer.close();
 

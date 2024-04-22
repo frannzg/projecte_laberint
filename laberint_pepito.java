@@ -358,9 +358,6 @@ public class laberint_pepito {
 				movimentsPartida++;
 				System.out.println("Caminant");
 				arribat = modificarPosicio(matriu, moviment);
-				System.out.print(x);
-				System.out.println(y);
-
 
 			}
 
@@ -440,7 +437,7 @@ public class laberint_pepito {
 					for (int j = 0; j < matriu[i].length; j++) {
 
 						matriu[i][j] = scFitxer.next();
-						System.out.println("GNQEWGE");
+						System.out.println("Proba_matriu");
 
 					}
 				}
@@ -526,8 +523,6 @@ public class laberint_pepito {
 	 */
 	public static void trobarPosicioInicial(String matriu[][], int x, int y) {
 
-		System.out.print(x);
-		System.out.println(y);
 
 		if (matriu[x][y].equalsIgnoreCase(" ")) {
 
@@ -552,8 +547,7 @@ public class laberint_pepito {
 			System.out.println("Entrada invàlida");
 
 		}
-		System.out.print(x);
-		System.out.println(y);
+
 
 	}
 
